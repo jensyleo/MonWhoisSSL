@@ -6,6 +6,8 @@ Terminal-based domain expiration and SSL certificate monitor with an interactive
 ![Python](https://img.shields.io/badge/python-3.8+-green.svg)
 ![License](https://img.shields.io/badge/license-GPLv3-orange.svg)
 
+![MonWhoisSSL main menu](docs/screenshot.png)
+
 ## 📋 Features
 
 - ✅ **Domain expiration lookup** via WHOIS
