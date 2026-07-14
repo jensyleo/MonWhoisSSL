@@ -1,0 +1,8 @@
+# Example domains.txt for MonWhoisSSL
+# Copy this file to domains.txt and edit it with the domains you want to monitor.
+# Empty lines and lines starting with '#' are ignored. Maximum 20 domains.
+
+google.com
+example.org
+github.com
+microsoft.com
