@@ -44,7 +44,7 @@ On modern macOS, the system Python is "externally managed" and blocks
 global `pip install`. Use a virtual environment (recommended):
 
 ```bash
-cd "Recon DNS y Certificados SSL"
+cd MonWhoisSSL
 python3 -m venv venv
 source venv/bin/activate
 pip install requests colorama
@@ -69,7 +69,7 @@ sudo apt install whois curl jq python3-venv python3-pip
 Then create the virtual environment and install the Python dependencies:
 
 ```bash
-cd "Recon DNS y Certificados SSL"
+cd MonWhoisSSL
 python3 -m venv venv
 source venv/bin/activate
 pip install requests colorama
