@@ -198,6 +198,12 @@ def pad_menu_line(text, width):
     padding = max(width - get_display_width(text), 0)
     return text + (' ' * padding)
 
+def truncate_to_width(text, width):
+    """Truncate text with an ellipsis if it exceeds the target column width, to avoid breaking matrix alignment"""
+    if len(text) > width:
+        return f"{text[:width - TEXT_TRUNCATE_SUFFIX_LENGTH]}..."
+    return text
+
 def show_ascii_art():
     """Display the banner ASCII art with dynamic centering"""
     # Banner with dynamically centered ASCII art (same block-letter style as WebMonitor)
@@ -1192,7 +1198,7 @@ def display_results_matrix(results_data, title, check_type):
         print_colored(f"{' ' * matrix_margin}║ ", Colors.CYAN, end="")
         for j, result in enumerate(row):
             if result["domain"]:
-                domain_text = f"{result['domain']:^{column_width}}"
+                domain_text = f"{truncate_to_width(result['domain'], column_width):^{column_width}}"
                 print_colored(domain_text, Colors.WHITE, end="")
             else:
                 print_colored(" " * column_width, end="")
@@ -1205,7 +1211,7 @@ def display_results_matrix(results_data, title, check_type):
         print_colored(f"{' ' * matrix_margin}║ ", Colors.CYAN, end="")
         for j, result in enumerate(row):
             if result["expiry"]:
-                expiry_text = f"{result['expiry']:^{column_width}}"
+                expiry_text = f"{truncate_to_width(result['expiry'], column_width):^{column_width}}"
                 print_colored(expiry_text, result["color"], end="")
             else:
                 print_colored(" " * column_width, end="")
@@ -1375,7 +1381,7 @@ def display_combined_results_matrix(results_data, title):
         print_colored(f"{' ' * matrix_margin}║ ", Colors.CYAN, end="")
         for j, result in enumerate(row):
             if result["domain"]:
-                domain_text = f"{result['domain']:^{column_width}}"
+                domain_text = f"{truncate_to_width(result['domain'], column_width):^{column_width}}"
                 print_colored(domain_text, Colors.WHITE, end="")
             else:
                 print_colored(" " * column_width, end="")
