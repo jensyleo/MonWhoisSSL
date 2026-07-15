@@ -31,13 +31,23 @@ Terminal-based domain expiration and SSL certificate monitor with an interactive
 - Python dependencies: `requests` and `colorama`
 - A terminal with ANSI color support (any modern terminal on macOS/Linux)
 
+**You usually don't need to install anything for the system tools.**
+`whois` and `curl` already ship by default on macOS and on most Linux
+distributions — `jq` is the one that's commonly missing and needs a
+manual install. **The script checks all three automatically on
+startup** and, if any are missing, prints exactly what's absent and
+the right install command for your OS (Ubuntu/Debian, macOS,
+CentOS/RHEL/Fedora) before doing anything else. You only need to run
+the install commands below if the script tells you something is
+missing.
+
 ### macOS
 
-Install the system tools with Homebrew:
+`whois` and `curl` are already included with macOS. If the script
+reports `jq` as missing, install it with Homebrew:
 
 ```bash
-brew install whois jq
-# curl comes preinstalled on macOS
+brew install jq
 ```
 
 On modern macOS, the system Python is "externally managed" and blocks
@@ -59,7 +69,9 @@ pip3 install requests colorama --break-system-packages
 
 ### Linux
 
-Install the system tools first (Debian/Ubuntu):
+Most distributions already include `curl` and often `whois`; `jq` is
+usually the one you'll need to add. If the script (see below) reports
+any of them as missing, install them (Debian/Ubuntu):
 
 ```bash
 sudo apt update
@@ -80,9 +92,6 @@ Alternative for distros without the externally-managed restriction:
 ```bash
 pip3 install requests colorama
 ```
-
-The script checks for all of the above on startup and prints
-per-OS install instructions for anything missing.
 
 ### Deactivating the virtual environment
 
