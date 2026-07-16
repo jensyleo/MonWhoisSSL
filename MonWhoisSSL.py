@@ -30,6 +30,7 @@ RGB_SUCCESS = Fore.GREEN              # Specific green for success messages
 RGB_BLUE = Fore.CYAN                  # Blue elements
 RGB_YELLOW = Fore.YELLOW              # Yellow elements
 RGB_RED = Fore.RED                    # Errors
+RGB_ORANGE = Fore.LIGHTRED_EX          # Orange accent
 RGB_LABEL = Fore.RED                  # DOM: and SSL: labels (same red used for CRITICAL status)
 RGB_ASCII_GREEN = Fore.LIGHTGREEN_EX  # ASCII art
 RESET_COLOR = Fore.RESET
@@ -1861,10 +1862,15 @@ def menu():
                     ctrl_r_margin = (terminal_width - len(ctrl_r_message)) // 2
                     print_colored(f"{' ' * ctrl_r_margin}{ctrl_r_message}", Colors.BLUE)
 
+                    # Show CONTROL-C instructions message
+                    ctrl_c_message = "💡 Press CONTROL-C to stop monitoring and return to the main menu"
+                    ctrl_c_margin = (terminal_width - len(ctrl_c_message)) // 2
+                    print_colored(f"{' ' * ctrl_c_margin}{ctrl_c_message}", Colors.YELLOW)
+
                     # Show centered message right after the countdown
                     message = "💡 The expiration time is expressed in days"
                     message_margin = (terminal_width - len(message)) // 2
-                    print_colored(f"{' ' * message_margin}{message}", Colors.YELLOW)
+                    print_colored(f"{' ' * message_margin}{message}", RGB_ORANGE)
 
                     # 8-hour countdown
                     total_seconds = MONITORING_INTERVAL_SECONDS
