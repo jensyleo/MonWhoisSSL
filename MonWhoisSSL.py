@@ -30,7 +30,7 @@ RGB_SUCCESS = Fore.GREEN              # Specific green for success messages
 RGB_BLUE = Fore.CYAN                  # Blue elements
 RGB_YELLOW = Fore.YELLOW              # Yellow elements
 RGB_RED = Fore.RED                    # Errors
-RGB_LABEL = Fore.MAGENTA              # DOM: and SSL: labels (distinct from the RED/YELLOW/GREEN status colors)
+RGB_LABEL = Fore.RED                  # DOM: and SSL: labels (same red used for CRITICAL status)
 RGB_ASCII_GREEN = Fore.LIGHTGREEN_EX  # ASCII art
 RESET_COLOR = Fore.RESET
 
