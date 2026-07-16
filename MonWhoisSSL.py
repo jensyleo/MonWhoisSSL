@@ -90,7 +90,7 @@ MSG_TLD_NOT_SUPPORTED = "TLD not supported"  # TLD not supported by RDAP
 
 # Matrix and UI configuration constants
 MATRIX_COLUMNS = 4              # Number of columns in the results matrix
-MATRIX_STRUCTURE_WIDTH = 14     # Width in characters of the matrix structure (separators and spaces)
+MATRIX_STRUCTURE_WIDTH = 13     # Width in characters of the matrix structure (separators and spaces)
 MATRIX_BORDER_WIDTH = 2         # Width of the matrix border (for internal width calculation)
 
 # Processing constants
@@ -1181,8 +1181,11 @@ def display_results_matrix(results_data, title, check_type):
         matrix.append(row)
 
     # Calculate column width using the helper function
-    matrix_total_width = terminal_width
     column_width = calculate_matrix_column_width(terminal_width)
+    # Frame width must match the actual row width (structure + columns), not the raw
+    # terminal width, otherwise the floor-divided column_width leaves the right border
+    # short of the frame's right edge.
+    matrix_total_width = MATRIX_STRUCTURE_WIDTH + (MATRIX_COLUMNS * column_width)
 
     # No margin since we use the full width
     matrix_margin = 0
@@ -1366,8 +1369,11 @@ def display_combined_results_matrix(results_data, title):
         matrix.append(row)
 
     # Calculate column width using the helper function
-    matrix_total_width = terminal_width
     column_width = calculate_matrix_column_width(terminal_width)
+    # Frame width must match the actual row width (structure + columns), not the raw
+    # terminal width, otherwise the floor-divided column_width leaves the right border
+    # short of the frame's right edge.
+    matrix_total_width = MATRIX_STRUCTURE_WIDTH + (MATRIX_COLUMNS * column_width)
     matrix_margin = 0  # The matrix uses the full width, no margin needed
 
     print_colored(f"{' ' * title_margin}{title_text}", Colors.WHITE)
@@ -1520,7 +1526,6 @@ def update_matrix_character_by_character(old_results, new_results):
         terminal_width = get_terminal_width()
 
         # Calculate column width using the helper function
-        matrix_total_width = terminal_width
         column_width = calculate_matrix_column_width(terminal_width)
 
 
