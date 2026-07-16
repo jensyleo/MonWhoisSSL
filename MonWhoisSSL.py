@@ -40,13 +40,10 @@ class Colors:
     GREEN = RGB_GREEN
     YELLOW = RGB_YELLOW
     BLUE = RGB_BLUE
-    PURPLE = Fore.WHITE
     CYAN = Fore.CYAN
     WHITE = Fore.WHITE
     BOLD = Style.BRIGHT
-    UNDERLINE = ''  # colorama has no standard underline; kept for API compatibility
     END = RESET_COLOR
-    ASCII_GREEN = RGB_ASCII_GREEN
 
 # Timeout constants for network and subprocess operations
 TIMEOUT_DNS = 1              # Timeout for DNS verification (requests)
