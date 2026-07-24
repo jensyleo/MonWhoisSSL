@@ -214,7 +214,7 @@ This project is licensed under the GNU General Public License v3.0 - see [LICENS
 
 ## 👤 Author
 
-[jensyleo](https://github.com/jensyleo) - developed as part of the EH (Host Exploration) project.
+[jensyleo](https://github.com/jensyleo)
 
 ---
 
